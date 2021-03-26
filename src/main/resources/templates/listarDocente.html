@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeLeaf.org>
+<head>
+<meta charset="ISO-8859-1">
+<title>Listar Docentes</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container mt-4">
+	<a th:href="@{/newDocente}" class="btn btn-primary">Nuevo</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>IdDocente</th>
+					<th>Nombres</th>
+					<th>Identificacion</th>
+				</tr>
+				</thead>
+			
+			<tbody>
+				<tr th:each="docente:${docentes}">
+					<td th:text="${docente.idDocente}"></td>
+					<td th:text=${docente.Nombres}></td>
+					<td th:text=${docente.Identificacion}></td>
+					<td>
+						<a th:href="@{/editarDocente/}+${docente.idDocente}" class = "btn btn-warning">Editar</a>
+						<a th:onclick="eliminar([[${docente.idDocente}]])" class = "btn btn-danger">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="funciones.js"></script>
+</body>
+</html>
