@@ -17,15 +17,11 @@ public class Docente {
 	private String Identificacion;
 	
 	
-	public Docente() {
-		
-	}
-	
 	public Docente(int idDocente, String nombres, String identificacion) {
 		super();
 		this.idDocente = idDocente;
-		Nombres = nombres;
-		Identificacion = identificacion;
+		this.Nombres = nombres;
+		this.Identificacion = identificacion;
 	}
 	
 	public int getIdDocente() {
@@ -38,13 +34,13 @@ public class Docente {
 		return Nombres;
 	}
 	public void setNombres(String nombres) {
-		Nombres = nombres;
+		this.Nombres = nombres;
 	}
 	public String getIdentificacion() {
 		return Identificacion;
 	}
 	public void setIdentificacion(String identificacion) {
-		Identificacion = identificacion;
+		this.Identificacion = identificacion;
 	}
 	
 	
