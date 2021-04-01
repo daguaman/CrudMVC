@@ -1,4 +1,4 @@
-package com.crud.demo.controller;
+package com.crud.demo.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.crud.demo.interfaceService.IAsignaturaService;
-import com.crud.demo.model.Asignatura;
+import com.crud.demo.models.entity.Asignatura;
+import com.crud.demo.models.serviceImp.IAsignaturaService;
 
 //En vez de controller cambiarle a Rest
 @Controller
 @RequestMapping
-public class Asignaturacontroller {
+public class AsignaturaController {
 
 	@Autowired
 	private IAsignaturaService service;
@@ -41,11 +41,10 @@ public class Asignaturacontroller {
 	public String save(@Valid Asignatura a, Model model) {
 		service.Save(a);
 		return "redirect:/listarAsignatura";
-		
 	}
 	
 	@GetMapping("/editarAsignatura/{idAsignatura}")
-	public String editar(@PathVariable int idAsignatura, Model model) {
+	public String editar(@PathVariable Long idAsignatura, Model model) {
 		Optional<Asignatura>asignatura = service.listarid(idAsignatura);
 		model.addAttribute("asignatura",asignatura);
 		return "addAsignatura";
@@ -53,7 +52,7 @@ public class Asignaturacontroller {
 	}
 	
 	@GetMapping("/eliminarAsignatura/{idAsignatura}")
-	public String eliminar(Model model, @PathVariable int idAsignatura) {
+	public String eliminar(Model model, @PathVariable Long idAsignatura) {
 		service.Delete(idAsignatura);
 		return "redirect:/listarAsignatura";
 		

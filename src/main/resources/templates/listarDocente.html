@@ -20,15 +20,24 @@
 			
 			<tbody>
 				<tr th:each="docente:${docentes}">
-					<td th:text="${docente.idDocente}"></td>
+					<td th:text="${docente.id}"></td>
 					<td th:text=${docente.Nombres}></td>
 					<td th:text=${docente.Identificacion}></td>
 					<td>
-						<a th:href="@{/editarDocente/}+${docente.idDocente}" class = "btn btn-warning">Editar</a>
-						<a th:onclick="eliminar([[${docente.idDocente}]])" class = "btn btn-danger">Eliminar</a>
+						<a th:href="@{/editarDocente/}+${docente.id}" class = "btn btn-warning">Editar</a>
+						<a th:onclick="eliminar([[${docente.id}]])" class = "btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>
+			<div class="card-footer">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a th:href="@{/newDocente}">Add Docente</a></li>
+                      <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                    </ol>
+				</nav>
+			</div>
+			
 		</table>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>

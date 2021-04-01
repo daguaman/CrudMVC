@@ -1,4 +1,4 @@
-package com.crud.demo.service;
+package com.crud.demo.models.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,14 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.crud.demo.interfaceService.IDocenteService;
-import com.crud.demo.interfaces.IDocente;
-import com.crud.demo.model.Docente;
+import com.crud.demo.models.dao.IDocenteDao;
+import com.crud.demo.models.entity.Docente;
+import com.crud.demo.models.serviceImp.IDocenteService;
 
 @Service
 public class DocenteService implements IDocenteService{
 	@Autowired
-	private IDocente data;
+	private IDocenteDao data;
 	
 	
 	@Override
@@ -23,7 +23,7 @@ public class DocenteService implements IDocenteService{
 	}
 
 	@Override
-	public Optional<Docente> listarId(int id) {
+	public Optional<Docente> listarId(Long id) {
 		return data.findById(id);
 	}
 
@@ -38,7 +38,7 @@ public class DocenteService implements IDocenteService{
 	}
 
 	@Override
-	public void Delete(int id) {
+	public void Delete(Long id) {
 		data.deleteById(id);
 	}
 

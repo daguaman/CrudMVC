@@ -2,43 +2,42 @@
 <html xmlns:th=http://www.thymeLeaf.org>
 <head>
 <meta charset="ISO-8859-1">
-<title>Listar Asignaturas</title>
+<title>Listar Asignaturas Docentes</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
 <body>
 	<div class="container mt-4">
-	<a th:href="@{/newAsignatura}" class="btn btn-primary">Nuevo</a>
 		<table class="table">
 			<thead>
 				<tr>
 					<th>IdAsignatura</th>
+					<th>IdDocente</th>
+					<th>NombreAsg</th>
+					<th>CodigoAsg</th>
+					<th>Identificacion</th>
 					<th>Nombre</th>
-					<th>Codigo</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
-			
 			<tbody>
-				<tr th:each="asignatura:${asignaturas}">
-					<td th:text="${asignatura.id}"></td>
-					<td th:text=${asignatura.Nombre}></td>
-					<td th:text=${asignatura.Codigo}></td>
-					<td>
-						<a th:href="@{/editarAsignatura/}+${asignatura.id}" class = "btn btn-warning">Editar</a>
-						<a th:onclick="eliminar([[${asignatura.id}]])" class = "btn btn-danger">Eliminar</a>
-					</td>
-				</tr>
+				
+				<tr th:each="asgdoc : ${listaAsgdocentes}">
+					<td th:text="${asgdoc.idAsg}"></td>
+					<td th:text="${asgdoc.idDoc}"></td>
+					<td th:text=${asgdoc.NombreAsg}></td>
+					<td th:text=${asgdoc.CodigoAsg}></td>
+					<td th:text=${asgdoc.Identificacion}></td>
+					<td th:text=${asgdoc.Nombres}></td>
 			</tbody>
 			<div class="card-footer">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item"><a th:href="@{/newAsignatura}">Add Asignatura</a></li>
-                      <!-- <li class="breadcrumb-item"><a th:href="@{/newAsgDoc/}+${asignatura.id}">Asignatura->Docente</a></li> -->
+                      <!-- <li class="breadcrumb-item"><a th:href="@{/newAsgDoc/}+${asgdoc.idAsg}">Asignatura->Docente</a></li> -->
                       <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
                     </ol>
 				</nav>
 			</div>
-
 		</table>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>

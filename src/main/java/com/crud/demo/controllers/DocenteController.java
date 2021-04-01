@@ -1,4 +1,4 @@
-package com.crud.demo.controller;
+package com.crud.demo.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.crud.demo.interfaceService.IDocenteService;
-import com.crud.demo.model.Docente;
+import com.crud.demo.models.entity.Docente;
+import com.crud.demo.models.serviceImp.IDocenteService;
 
 @Controller
 @RequestMapping
-public class Docentecontroller {
+public class DocenteController {
 	@Autowired
 	private IDocenteService service;
 	
@@ -43,7 +43,7 @@ public class Docentecontroller {
 	}
 	
 	@GetMapping("/editarDocente/{idDocente}")
-	public String editar(@PathVariable int idDocente, Model model) {
+	public String editar(@PathVariable Long idDocente, Model model) {
 		Optional<Docente>docente = service.listarId(idDocente);
 		model.addAttribute("docente",docente);
 		return "addDocente";
@@ -51,7 +51,7 @@ public class Docentecontroller {
 	}
 	
 	@GetMapping("/eliminarDocente/{idDocente}")
-	public String eliminar(Model model, @PathVariable int idDocente) {
+	public String eliminar(Model model, @PathVariable Long idDocente) {
 		service.Delete(idDocente);
 		return "redirect:/listarDocente";
 		
