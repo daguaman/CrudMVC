@@ -17,10 +17,6 @@ public class Estudiante {
 	private String Identificacion;
 	
 	
-	public Estudiante() {
-		
-	}
-	
 	public Estudiante(int idEstudiante, String nombres, String identificacion) {
 		super();
 		this.idEstudiante = idEstudiante;
