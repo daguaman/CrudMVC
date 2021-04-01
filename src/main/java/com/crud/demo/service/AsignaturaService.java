@@ -19,6 +19,7 @@ public class AsignaturaService implements IAsignaturaService{
 	@Override
 	public List<Asignatura> listar() {
 		// TODO Auto-generated method stub
+		//
 		return (List<Asignatura>) data.findAll();
 	}
 
