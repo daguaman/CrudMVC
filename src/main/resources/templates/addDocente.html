@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<title>Add Docente</title>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>Add Docente</title>
 </head>
+
 <body>
 	<div class="container mt-4">
 		<div class="col-sm-6">
 			<form th:action="@{/saveDocente}" th:object=${docente} method="POST">
 				<div class="card">
-						<div class="card-header"></div>
-						<h3>Modulo Docente</h3>
-						<div class="card-body"></div>
-							<div class="card-body">
-								<div class="form-group">
-									<label>IdDocente</label>
-									<input th:field="*{idDocente}" type="text" class="form-control">
-								</div>
-								<div class="form-group">
-									<label>Nombres</label>
-									<input th:field="*{Nombres}" type="text" class="form-control">
-								</div>
-								<div class="form-group">
-									<label>Identificacion</label>
-									<input th:field="*{Identificacion}" type="text" class="form-control">
-								</div>
-							</div>
-						<div class="card-footer"></div>
-						<input type="submit" value="Guardar" class="btn btn-success">
+					<div class="card-header"></div>
+					<h3>Modulo Docente</h3>
+					<div class="card-body"></div>
+					<div class="card-body">
+						<div class="form-group">
+							<label>IdDocente</label>
+							<input th:field="*{idDocente}" type="text" class="form-control">
+						</div>
+						<div class="form-group">
+							<label>Nombres</label>
+							<input th:field="*{Nombres}" type="text" class="form-control">
+						</div>
+						<div class="form-group">
+							<label>Identificacion</label>
+							<input th:field="*{Identificacion}" type="text" class="form-control">
+						</div>
+					</div>
+					<div class="card-footer"></div>
+					<input type="submit" value="Guardar" class="btn btn-success">
 				</div>
-			</form>		
+			</form>
 		</div>
 	</div>
-	
+
 </body>
+
 </html>

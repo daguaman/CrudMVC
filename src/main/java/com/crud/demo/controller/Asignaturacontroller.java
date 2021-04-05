@@ -1,9 +1,11 @@
 package com.crud.demo.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
+
+import com.crud.demo.models.entity.Asignatura;
+import com.crud.demo.models.service.IAsignaturaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,20 +15,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.crud.demo.interfaceService.IAsignaturaService;
-import com.crud.demo.model.Asignatura;
-
 //En vez de controller cambiarle a Rest
 @Controller
 @RequestMapping
-public class Asignaturacontroller {
+public class AsignaturaController {
 
 	@Autowired
 	private IAsignaturaService service;
 	
 	@GetMapping("/listarAsignatura")
 	public String listar(Model model) {
-		List<Asignatura> asignaturas = service.listar();
+		List<Asignatura> asignaturas = service.findAll();
 		model.addAttribute("asignaturas",asignaturas);
 		return "listarAsignatura";
 	}
@@ -39,22 +38,22 @@ public class Asignaturacontroller {
 	
 	@PostMapping("/saveAsignatura")
 	public String save(@Valid Asignatura a, Model model) {
-		service.Save(a);
+		service.save(a);
 		return "redirect:/listarAsignatura";
 		
 	}
 	
-	@GetMapping("/editarAsignatura/{idAsignatura}")
-	public String editar(@PathVariable int idAsignatura, Model model) {
-		Optional<Asignatura>asignatura = service.listarid(idAsignatura);
-		model.addAttribute("asignatura",asignatura);
-		return "addAsignatura";
+	// @GetMapping("/editarAsignatura/{idAsignatura}")
+	// public String editar(@PathVariable Long idAsignatura, Model model) {
+	// 	Asignatura asignatura = service.findById(idAsignatura);
+	// 	model.addAttribute("asignatura",asignatura);
+	// 	return "addAsignatura";
 		
-	}
+	// }
 	
 	@GetMapping("/eliminarAsignatura/{idAsignatura}")
-	public String eliminar(Model model, @PathVariable int idAsignatura) {
-		service.Delete(idAsignatura);
+	public String eliminar(Model model, @PathVariable Long idAsignatura) {
+		service.deleteById(idAsignatura);
 		return "redirect:/listarAsignatura";
 		
 	}
